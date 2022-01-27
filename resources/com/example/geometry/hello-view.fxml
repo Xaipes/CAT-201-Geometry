@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.geometry.HelloController">
+   <children>
+      <MediaView fx:id="mediaView" fitHeight="477.0" fitWidth="800.0" />
+      <Button fx:id="StartButton" layoutX="337.0" layoutY="246.0" mnemonicParsing="false" onAction="#playMedia" prefHeight="26.0" prefWidth="126.0" text="START" />
+      <Button fx:id="RulesButton" layoutX="337.0" layoutY="284.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="126.0" text="HOW TO PLAY" />
+      <Text layoutX="326.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Press Start To Begin..." textAlignment="CENTER" wrappingWidth="148.53668212890625" />
+      <ImageView fx:id="GeometryLogo" fitHeight="108.0" fitWidth="368.0" layoutX="216.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../Downloads/CAT%20201/Project/TITLE.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

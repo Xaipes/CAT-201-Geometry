@@ -1,6 +1,3 @@
-//Include the file in the package
-package com.geometry;
-
 //Create a class for the player
 public class Player 
 {
@@ -54,3 +51,4 @@ public class Player
         this.player_is_correct = right_wrong;
     }
 }
+

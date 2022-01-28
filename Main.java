@@ -1,13 +1,9 @@
-//include the file in the package
-package com.geometry;
-
 //Import the required packages
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.lang.Math;
-import javax.lang.model.util.ElementScanner14;
 
-//Import JavaFX packages
+/*Import JavaFX packages
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,7 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
+import javafx.stage.Stage;*/
 
 
 //Main Class
@@ -42,9 +38,7 @@ public class Main {
         number_of_points = user_input.nextInt();
 
         //Set the coordinates for the original shape and duplicate it to the image shape
-        coordinates_input(number_of_points, plot_x, plot_y);
-        plot_x_image = plot_x;
-        plot_y_image = plot_y;
+        coordinates_input(number_of_points, plot_x, plot_y, plot_x_image, plot_y_image);
 
         //Call Translation Round
         translation_rounds(4, number_of_points, plot_x, plot_y, plot_x_image, plot_y_image);
@@ -58,8 +52,8 @@ public class Main {
 
     }
 
-    /*Method to Receive Coordinates Input*/
-    public static void coordinates_input(int number_of_points_alt, ArrayList<Integer> x_coord, ArrayList<Integer> y_coord)
+    //Method to Receive Coordinates Input
+    public static void coordinates_input(int number_of_points_alt, ArrayList<Integer> plot_x_alt, ArrayList<Integer> plot_y_alt, ArrayList<Integer> plot_x_image_alt, ArrayList<Integer> plot_y_image_alt)
     {
 
         //Create temporary variables to hold coordinates
@@ -69,15 +63,17 @@ public class Main {
         //Create a loop to receive input for the coordinates of all points
         for(int i = 1; i <= number_of_points_alt; i++)
         {
-            //Input x coordinate of a point
+            //Input x coordinate of a point to both the original and image shape's array
             System.out.print("Enter the #" + i + " coordinate's x value: ");
             temp_x = user_input.nextInt();
-            x_coord.add(temp_x);
+            plot_x_alt.add(temp_x);
+            plot_x_image_alt.add(temp_x);
 
-            //Input y coordinate of a point
+            //Input y coordinate of a point to both the original and image shape's array
             System.out.print("Enter the #" + i + " coordinate's y value: ");
             temp_y = user_input.nextInt();
-            y_coord.add(temp_y);
+            plot_y_alt.add(temp_y);
+            plot_y_image_alt.add(temp_y);
 
             //Print an empty line for visual aid
             System.out.print("\n");
@@ -85,6 +81,23 @@ public class Main {
 
     }
     
+    //Method for Resetting Image Coordinates
+    public static void reset_image(int number_of_points_alt, ArrayList<Integer> plot_x_alt, ArrayList<Integer> plot_y_alt, ArrayList<Integer> plot_x_image_alt, ArrayList<Integer> plot_y_image_alt)
+    {
+
+        //Create a loop to update the coordinates of all points based on the original shape
+        for(int i = 0; i < number_of_points_alt; i++)
+        {
+            //Update x coordinates
+            plot_x_image_alt.set(i, plot_x_alt.get(i));
+
+            //Update y coordinates
+            plot_y_image_alt.set(i, plot_y_alt.get(i));
+
+        }
+
+    }
+
     //Method for Translation
     public static void translation(int trans_x, int trans_y, int number_of_points_alt, ArrayList<Integer> x_coord, ArrayList<Integer> y_coord)
     {
@@ -107,15 +120,8 @@ public class Main {
     }
 
     //Method for Scaling
-    public static void scaling(int scale_input, int input_ref_x, int input_ref_y, int number_of_points_alt, ArrayList<Integer> x_coord, ArrayList<Integer> y_coord)
+    public static void scaling(int scale_factor, int ref_x, int ref_y, int number_of_points_alt, ArrayList<Integer> x_coord, ArrayList<Integer> y_coord)
     {
-
-        //Receive user input for scale factor and reference point coordinates
-        int ref_x = input_ref_x;
-        int ref_y = input_ref_y;
-
-        //Use the randomly generated number as the scale factor
-        int scale_factor = scale_input;
 
         //Create temporary variables to hold the updated coordinates
         int temp_x;
@@ -234,17 +240,18 @@ public class Main {
             //Check the player's answer
             if (answer_x == rand_1 && answer_y == rand_2){
                 player_1.set_player_is_correct(true);
+                System.out.print("Correct!\n");
             }
             else{
                 player_1.set_player_is_correct(false);
+                System.out.print("Wrong!\n");
             }
 
             //Calculate the player's score
             player_1.set_player_score();
 
             //Reset the coordinates of the image shape to match the original shape at the end of the round
-            plot_x_image_alt = plot_x_alt;
-            plot_y_image_alt = plot_y_alt;
+            reset_image(number_of_points_alt, plot_x_alt, plot_y_alt, plot_x_image_alt, plot_y_image_alt);
             
         }
 
@@ -283,17 +290,18 @@ public class Main {
             //Check the player's answer
             if (answer == rand){
                 player_1.set_player_is_correct(true);
+                System.out.print("Correct!\n");
             }
             else{
                 player_1.set_player_is_correct(false);
+                System.out.print("Wrong!\n");
             }
 
             //Calculate the player's score
             player_1.set_player_score();
 
             //Reset the coordinates of the image shape to match the original shape at the end of the round
-            plot_x_image_alt = plot_x_alt;
-            plot_y_image_alt = plot_y_alt;
+            reset_image(number_of_points_alt, plot_x_alt, plot_y_alt, plot_x_image_alt, plot_y_image_alt);
             
         }
 
@@ -336,17 +344,18 @@ public class Main {
             //Check the player's answer
             if (answer_1 == rand_1 && answer_2 == rand_2){
                 player_1.set_player_is_correct(true);
+                System.out.print("Correct!\n");
             }
             else{
                 player_1.set_player_is_correct(false);
+                System.out.print("Wrong!\n");
             }
 
             //Calculate the player's score
             player_1.set_player_score();
 
             //Reset the coordinates of the image shape to match the original shape at the end of the round
-            plot_x_image_alt = plot_x_alt;
-            plot_y_image_alt = plot_y_alt;
+            reset_image(number_of_points_alt, plot_x_alt, plot_y_alt, plot_x_image_alt, plot_y_image_alt);
             
         }
 
@@ -385,17 +394,18 @@ public class Main {
             //Check the player's answer
             if (answer == rand){
                 player_1.set_player_is_correct(true);
+                System.out.print("Correct!\n");
             }
             else{
                 player_1.set_player_is_correct(false);
+                System.out.print("Wrong!\n");
             }
 
             //Calculate the player's score
             player_1.set_player_score();
 
             //Reset the coordinates of the image shape to match the original shape at the end of the round
-            plot_x_image_alt = plot_x_alt;
-            plot_y_image_alt = plot_y_alt;
+            reset_image(number_of_points_alt, plot_x_alt, plot_y_alt, plot_x_image_alt, plot_y_image_alt);
             
         }
 
@@ -403,4 +413,3 @@ public class Main {
     }
 
 }
-

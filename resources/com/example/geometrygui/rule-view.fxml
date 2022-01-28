@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane onDragDetected="#handlebckbtn" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.geometrygui.HelloController">
+   <children>
+      <Text layoutX="115.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How To Play ?" textAlignment="CENTER" wrappingWidth="369.52032470703125">
+         <font>
+            <Font name="Courier New" size="36.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b8d1ff45" height="268.0" layoutX="47.0" layoutY="81.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="506.0" />
+      <Button fx:id="backButton" layoutX="478.0" layoutY="362.0" mnemonicParsing="false" onAction="#handlebckbtn" prefHeight="23.0" prefWidth="74.0" text="Back">
+         <font>
+            <Font name="Courier New" size="12.0" />
+         </font>
+      </Button>
+      <Text layoutX="62.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. User generated a shape using the application." wrappingWidth="471.265625">
+         <font>
+            <Font name="Courier New" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="61.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. There are 16 questions generated based on levels with increasing difficulty (Translation, Reflection, Scaling, and Rotation, 4 questions per feature)" wrappingWidth="477.978515625">
+         <font>
+            <Font name="Courier New" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="61.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. User needs to enter the correct coordinates to answer the question." wrappingWidth="477.978515625">
+         <font>
+            <Font name="Courier New" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="61.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4. If the answer is correct, the user will get 100 marks, else, the marks will be reduced by 50. " textAlignment="JUSTIFY" wrappingWidth="477.978515625">
+         <font>
+            <Font name="Courier New" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="61.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. After the user finished answering 16 questions, marks will be generated and a congratulatory message will be displayed based on the user’s marks. " textAlignment="JUSTIFY" wrappingWidth="477.978515625">
+         <font>
+            <Font name="Courier New" size="14.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

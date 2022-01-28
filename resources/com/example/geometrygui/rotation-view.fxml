@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.geometrygui.HelloController">
+   <children>
+      <Label fx:id="transitionLVL" layoutX="17.0" layoutY="21.0" prefHeight="23.0" prefWidth="98.0" text="Level 1">
+         <font>
+            <Font name="Courier New Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_RIGHT" layoutX="488.0" layoutY="22.0" prefHeight="23.0" prefWidth="98.0" text="Score">
+         <font>
+            <Font name="Courier New Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="ScaleValue" alignment="TOP_CENTER" layoutX="230.0" layoutY="278.0" prefHeight="20.0" prefWidth="163.0" text="Rotating Angle :" textAlignment="CENTER">
+         <font>
+            <Font name="Courier New" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="282.0" layoutY="233.0" prefHeight="20.0" prefWidth="64.0" text="Answer:">
+         <font>
+            <Font name="Courier New" size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="285.0" layoutY="362.0" mnemonicParsing="false" text="Check" />
+      <MenuButton fx:id="relectedOnBtn" layoutX="275.0" layoutY="297.0" mnemonicParsing="false" text="Select">
+         <items>
+            <MenuItem mnemonicParsing="false" text="90 Degree" />
+            <MenuItem mnemonicParsing="false" text="180Degree" />
+            <MenuItem mnemonicParsing="false" text="360 Degree" />
+         </items>
+      </MenuButton>
+   </children>
+</AnchorPane>

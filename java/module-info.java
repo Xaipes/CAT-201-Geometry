@@ -1,12 +1,8 @@
-/**
- *
- */
-module com.example.geometry {
+module com.example.geometrygui {
     requires javafx.controls;
     requires javafx.fxml;
-    requires javafx.media;
 
 
-    opens com.example.geometry to javafx.fxml;
-    exports com.example.geometry;
+    opens com.example.geometrygui to javafx.fxml;
+    exports com.example.geometrygui;
 }

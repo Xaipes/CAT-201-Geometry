@@ -35,9 +35,40 @@ public class HelloController {
     @FXML
     private TextField enterPoints;
     @FXML
-    private Button confirmPoint, homeButton;
+    private static TextField enterXaxis;
+    @FXML
+    private static TextField enterYaxis;
+    @FXML
+    private static TextField enterScalevVal;
+    @FXML
+    private static TextField enterAxisVal;
+    @FXML
+    private Button confirmPoint;
+    @FXML
+    private Button homeButton;
+    @FXML
+    private static Button rotationBtn;
+    @FXML
+    private static Button reflectedOnBtn;
     @FXML
     private ImageView imgSuccess, BckgroundView;
+    @FXML
+    private static TextField enterCoordx1;
+    @FXML
+    private static TextField enterCoordx2;
+    @FXML
+    private static TextField enterCoordx3;
+    @FXML
+    private static TextField enterCoordx4;
+    @FXML
+    private static TextField enterCoordy1;
+    @FXML
+    private static TextField enterCoordy2;
+    @FXML
+    private static TextField enterCoordy3;
+    @FXML
+    private static TextField enterCoordy4;
+
 
 
     // SUBMITTING THE POINTS
@@ -125,26 +156,25 @@ public class HelloController {
     //Method to Receive Coordinates Input
     public static void coordinates_input(int number_of_points_alt, ArrayList<Integer> plot_x_alt, ArrayList<Integer> plot_y_alt, ArrayList<Integer> plot_x_image_alt, ArrayList<Integer> plot_y_image_alt)
     {
+        //Assign the entered x coordinate values
+        plot_x_alt.add(Integer.parseInt(enterCoordx1.getText()));
+        plot_x_alt.add(Integer.parseInt(enterCoordx2.getText()));
+        plot_x_alt.add(Integer.parseInt(enterCoordx3.getText()));
+        plot_x_alt.add(Integer.parseInt(enterCoordx4.getText()));
+        plot_x_image_alt.add(Integer.parseInt(enterCoordx1.getText()));
+        plot_x_image_alt.add(Integer.parseInt(enterCoordx2.getText()));
+        plot_x_image_alt.add(Integer.parseInt(enterCoordx3.getText()));
+        plot_x_image_alt.add(Integer.parseInt(enterCoordx4.getText()));
 
         //Assign the entered x coordinate values
-        plot_x_alt.add(Integer.parseInt(enterCoordx1.getText());
-        plot_x_alt.add(Integer.parseInt(enterCoordx2.getText());
-        plot_x_alt.add(Integer.parseInt(enterCoordx3.getText());
-        plot_x_alt.add(Integer.parseInt(enterCoordx4.getText());
-        plot_x_image_alt.add(Integer.parseInt(enterCoordx1.getText());
-        plot_x_image_alt.add(Integer.parseInt(enterCoordx2.getText());
-        plot_x_image_alt.add(Integer.parseInt(enterCoordx3.getText());
-        plot_x_image_alt.add(Integer.parseInt(enterCoordx4.getText());
-
-        //Assign the entered x coordinate values
-        plot_y_alt.add(Integer.parseInt(enterCoordy1.getText());
-        plot_y_alt.add(Integer.parseInt(enterCoordy2.getText());
-        plot_y_alt.add(Integer.parseInt(enterCoordy3.getText());
-        plot_y_alt.add(Integer.parseInt(enterCoordy4.getText());
-        plot_y_image_alt.add(Integer.parseInt(enterCoordy1.getText());
-        plot_y_image_alt.add(Integer.parseInt(enterCoordy2.getText());
-        plot_y_image_alt.add(Integer.parseInt(enterCoordy3.getText());
-        plot_y_image_alt.add(Integer.parseInt(enterCoordy4.getText());
+        plot_y_alt.add(Integer.parseInt(enterCoordy1.getText()));
+        plot_y_alt.add(Integer.parseInt(enterCoordy2.getText()));
+        plot_y_alt.add(Integer.parseInt(enterCoordy3.getText()));
+        plot_y_alt.add(Integer.parseInt(enterCoordy4.getText()));
+        plot_y_image_alt.add(Integer.parseInt(enterCoordy1.getText()));
+        plot_y_image_alt.add(Integer.parseInt(enterCoordy2.getText()));
+        plot_y_image_alt.add(Integer.parseInt(enterCoordy3.getText()));
+        plot_y_image_alt.add(Integer.parseInt(enterCoordy4.getText()));
 
     }
 
@@ -270,7 +300,6 @@ public class HelloController {
             temp_y = (old_x * Math.sin(angle_rad)) + (old_y * Math.cos(angle_rad));
             y_coord.set(i, (int) Math.round(temp_y));
         }
-
     }
 
     //Method for Translation Rounds
@@ -317,11 +346,7 @@ public class HelloController {
 
             //Reset the coordinates of the image shape to match the original shape at the end of the round
             reset_image(number_of_points_alt, plot_x_alt, plot_y_alt, plot_x_image_alt, plot_y_image_alt);
-
         }
-
-
-
     }
 
     //Method for Scaling Rounds
@@ -366,10 +391,7 @@ public class HelloController {
 
             //Reset the coordinates of the image shape to match the original shape at the end of the round
             reset_image(number_of_points_alt, plot_x_alt, plot_y_alt, plot_x_image_alt, plot_y_image_alt);
-
         }
-
-
     }
 
     //Method for Reflection Rounds
@@ -424,10 +446,7 @@ public class HelloController {
 
             //Reset the coordinates of the image shape to match the original shape at the end of the round
             reset_image(number_of_points_alt, plot_x_alt, plot_y_alt, plot_x_image_alt, plot_y_image_alt);
-
         }
-
-
     }
 
     //Method for Rotation Rounds
@@ -457,9 +476,9 @@ public class HelloController {
 
             //Update answer with input from the drop down menu
             int answer;
-            if (rotationBtn == "90 Degrees")
+            if (rotationBtn.getText() == "90 Degrees")
                 answer = 90;
-            else if (rotationBtn == "180 Degrees")
+            else if (rotationBtn.getText() == "180 Degrees")
                 answer = 180;
             else
                 answer = 270;

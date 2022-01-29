@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.geometrygui.HelloController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ab0000" height="400.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+      <Label alignment="TOP_CENTER" layoutX="222.0" layoutY="262.0" prefHeight="38.0" prefWidth="137.0" text="Wrong">
+         <font>
+            <Font name="Courier New Bold" size="24.0" />
+         </font>
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX">
+               <color>
+                  <Color red="1.0" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Label>
+      <Text fill="#ffffff00" layoutX="238.0" layoutY="305.0" stroke="#ffbaba" strokeType="OUTSIDE" strokeWidth="2.0" text="- 50 points" textAlignment="CENTER" wrappingWidth="107.84375">
+         <font>
+            <Font name="Courier New" size="14.0" />
+         </font>
+      </Text>
+      <Button fx:id="wrongNext" layoutX="247.0" layoutY="328.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="82.0" text="Next" />
+      <ImageView fx:id="imgSuccess" fitHeight="220.0" fitWidth="272.0" layoutX="167.0" layoutY="30.0" onMouseClicked="#getImgSuccess" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../java/com/example/geometrygui/assets/its-okay.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -28,13 +28,11 @@
             </font>
         </Text>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b8d1ff45" height="609.0" layoutX="67.0" layoutY="86.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="486.0" />
-        <TextField fx:id="enterCoordx1" layoutX="329.0" layoutY="156.0" onAction="#enterCoordx" prefHeight="25.0" prefWidth="67.0" />
         <Button fx:id="coordButton" layoutX="263.0" layoutY="731.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="90.0" text="Next">
             <font>
                 <Font name="Courier New" size="12.0" />
             </font>
         </Button>
-        <TextField fx:id="enterCoordy1" layoutX="329.0" layoutY="191.0" onAction="#enterCoordy" prefHeight="25.0" prefWidth="67.0" />
         <Label fx:id="coordx" layoutX="203.0" layoutY="151.0" prefHeight="34.0" prefWidth="125.0" text="Coordinate x:" textFill="WHITE">
             <font>
                 <Font name="Courier New" size="15.0" />
@@ -55,8 +53,6 @@
                 <Font name="Courier New" size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="enterCoordx2" layoutX="329.0" layoutY="264.0" onAction="#enterCoordx" prefHeight="25.0" prefWidth="67.0" />
-        <TextField fx:id="enterCoordy2" layoutX="329.0" layoutY="299.0" onAction="#enterCoordy" prefHeight="25.0" prefWidth="67.0" />
         <Label fx:id="coordx2" layoutX="203.0" layoutY="259.0" prefHeight="34.0" prefWidth="125.0" text="Coordinate x:" textFill="WHITE">
             <font>
                 <Font name="Courier New" size="15.0" />
@@ -72,8 +68,6 @@
                 <Font name="Courier New" size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="enterCoordx3" layoutX="328.0" layoutY="371.0" onAction="#enterCoordx" prefHeight="25.0" prefWidth="67.0" />
-        <TextField fx:id="enterCoordy3" layoutX="328.0" layoutY="406.0" onAction="#enterCoordy" prefHeight="25.0" prefWidth="67.0" />
         <Label fx:id="coordx21" layoutX="202.0" layoutY="366.0" prefHeight="34.0" prefWidth="125.0" text="Coordinate x:" textFill="WHITE">
             <font>
                 <Font name="Courier New" size="15.0" />
@@ -89,8 +83,6 @@
             <Font name="Courier New" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="enterCoordx4" layoutX="330.0" layoutY="486.0" onAction="#enterCoordx" prefHeight="25.0" prefWidth="67.0" />
-      <TextField fx:id="enterCoordy4" layoutX="330.0" layoutY="521.0" onAction="#enterCoordy" prefHeight="25.0" prefWidth="67.0" />
       <Label fx:id="coordx22" layoutX="204.0" layoutY="481.0" prefHeight="34.0" prefWidth="125.0" text="Coordinate x:" textFill="WHITE">
          <font>
             <Font name="Courier New" size="15.0" />
@@ -106,8 +98,6 @@
             <Font name="Courier New" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="enterCoordx5" layoutX="329.0" layoutY="604.0" onAction="#enterCoordx" prefHeight="25.0" prefWidth="67.0" />
-      <TextField fx:id="enterCoordy5" layoutX="329.0" layoutY="639.0" onAction="#enterCoordy" prefHeight="25.0" prefWidth="67.0" />
       <Label fx:id="coordx211" layoutX="203.0" layoutY="599.0" prefHeight="34.0" prefWidth="125.0" text="Coordinate x:" textFill="WHITE">
          <font>
             <Font name="Courier New" size="15.0" />
@@ -119,5 +109,15 @@
          </font>
       </Label>
       <Label fx:id="errorMSG" alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="96.0" prefHeight="18.0" prefWidth="418.0" textAlignment="CENTER" textFill="RED" />
+      <ChoiceBox layoutX="339.0" layoutY="155.0" prefHeight="26.0" prefWidth="62.0" fx:id="x1" />
+      <ChoiceBox fx:id="y1" layoutX="339.0" layoutY="190.0" prefHeight="26.0" prefWidth="62.0" />
+      <ChoiceBox layoutX="339.0" layoutY="262.0" prefHeight="26.0" prefWidth="62.0" fx:id="x2" />
+      <ChoiceBox fx:id="y2" layoutX="339.0" layoutY="297.0" prefHeight="26.0" prefWidth="62.0" />
+      <ChoiceBox layoutX="339.0" layoutY="372.0" prefHeight="26.0" prefWidth="62.0" fx:id="x3" />
+      <ChoiceBox fx:id="y3" layoutX="339.0" layoutY="407.0" prefHeight="26.0" prefWidth="62.0" />
+      <ChoiceBox layoutX="339.0" layoutY="484.0" prefHeight="26.0" prefWidth="62.0" fx:id="x4" />
+      <ChoiceBox fx:id="y4" layoutX="339.0" layoutY="519.0" prefHeight="26.0" prefWidth="62.0" />
+      <ChoiceBox layoutX="339.0" layoutY="602.0" prefHeight="26.0" prefWidth="62.0" fx:id="x5" />
+      <ChoiceBox fx:id="y5" layoutX="339.0" layoutY="637.0" prefHeight="26.0" prefWidth="62.0" />
     </children>
 </AnchorPane>

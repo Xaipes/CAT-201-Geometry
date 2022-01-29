@@ -35,7 +35,7 @@
       <Button fx:id="wrongNext" layoutX="247.0" layoutY="328.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="82.0" text="Next" />
       <ImageView fx:id="imgSuccess" fitHeight="220.0" fitWidth="272.0" layoutX="167.0" layoutY="30.0" onMouseClicked="#getImgSuccess" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../java/com/example/geometrygui/assets/its-okay.jpg" />
+            <Image url="@../../../assests/its-okay.jpg" />
          </image>
       </ImageView>
    </children>

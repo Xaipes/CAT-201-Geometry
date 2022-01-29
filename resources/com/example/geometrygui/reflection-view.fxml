@@ -5,42 +5,49 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.geometrygui.HelloController">
    <children>
-       <Label fx:id="transitionLVL" layoutX="17.0" layoutY="14.0" prefHeight="23.0" prefWidth="98.0" text="Level 1">
+      <ImageView fx:id="BckgroundView" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../assests/thumb2-neon-geometric-shapes-network-concepts-geometry-creative-black-backgrounds.jpg" />
+         </image>
+      </ImageView>
+       <Label fx:id="transitionLVL" layoutX="17.0" layoutY="14.0" prefHeight="23.0" prefWidth="98.0" text="Level 1" textFill="WHITE">
            <font>
                <Font name="Courier New Bold" size="18.0" />
            </font>
        </Label>
-       <Label alignment="TOP_RIGHT" layoutX="488.0" layoutY="15.0" prefHeight="23.0" prefWidth="98.0" text="Score">
+       <Label fx:id="score" alignment="TOP_RIGHT" layoutX="488.0" layoutY="15.0" prefHeight="23.0" prefWidth="98.0" text="Score" textFill="WHITE">
            <font>
                <Font name="Courier New Bold" size="18.0" />
            </font>
        </Label>
-      <Label fx:id="ScaleValue" layoutX="87.0" layoutY="293.0" prefHeight="20.0" prefWidth="143.0" text="Relected On:">
+      <Label fx:id="ScaleValue" layoutX="87.0" layoutY="293.0" prefHeight="20.0" prefWidth="143.0" text="Reflected On:" textFill="WHITE">
          <font>
-            <Font name="Courier New" size="14.0" />
+            <Font name="Courier New Bold" size="14.0" />
          </font>
       </Label>
       <TextField fx:id="enterAxisVal" layoutX="405.0" layoutY="289.0" />
-       <Label layoutX="274.0" layoutY="229.0" text="Answer:">
+       <Label layoutX="274.0" layoutY="229.0" text="Answer:" textFill="WHITE">
            <font>
-               <Font name="Courier New" size="14.0" />
+               <Font name="Courier New Bold" size="14.0" />
            </font>
        </Label>
       <Button layoutX="275.0" layoutY="352.0" mnemonicParsing="false" text="Check" />
-      <Label fx:id="AxisVal" layoutX="286.0" layoutY="292.0" prefHeight="20.0" prefWidth="143.0" text="Axis Value  :">
+      <Label fx:id="AxisVal" layoutX="286.0" layoutY="292.0" prefHeight="20.0" prefWidth="143.0" text="Axis Value  :" textFill="WHITE">
          <font>
-            <Font name="Courier New" size="14.0" />
+            <Font name="Courier New Bold" size="14.0" />
          </font>
       </Label>
-      <MenuButton fx:id="relectedOnBtn" layoutX="86.0" layoutY="315.0" mnemonicParsing="false" text="Select">
+      <MenuButton fx:id="reflectedOnBtn" layoutX="86.0" layoutY="315.0" mnemonicParsing="false" text="Select">
         <items>
-          <MenuItem mnemonicParsing="false" text="X-Axis" />
-          <MenuItem mnemonicParsing="false" text="Y-Axis" />
+          <MenuItem fx:id="Xaxis" mnemonicParsing="false" text="X-Axis" />
+          <MenuItem fx:id="Yaxis" mnemonicParsing="false" text="Y-Axis" />
         </items>
       </MenuButton>
    </children>

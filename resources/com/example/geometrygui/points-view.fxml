@@ -3,21 +3,27 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.geometrygui.HelloController">
    <children>
-      <Text layoutX="214.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Enter:">
+      <ImageView fx:id="BckgroundView" fitHeight="415.0" fitWidth="637.0" layoutX="-13.0" layoutY="-7.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../assests/thumb2-neon-geometric-shapes-network-concepts-geometry-creative-black-backgrounds.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="214.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Enter:">
          <font>
             <Font name="Courier New" size="22.0" />
          </font>
       </Text>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b8d1ff45" height="182.0" layoutX="57.0" layoutY="115.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="486.0" />
-      <Text layoutX="80.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Of Points:">
+      <Text fill="WHITE" layoutX="80.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Of Points:">
          <font>
             <Font name="Courier New" size="20.0" />
          </font>

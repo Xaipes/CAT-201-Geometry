@@ -3,32 +3,39 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.geometrygui.HelloController">
    <children>
-       <Label fx:id="transitionLVL" layoutX="17.0" layoutY="14.0" prefHeight="23.0" prefWidth="98.0" text="Level 1">
+      <ImageView fx:id="BckgroundView" fitHeight="408.0" fitWidth="619.0" layoutX="-4.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../assests/thumb2-neon-geometric-shapes-network-concepts-geometry-creative-black-backgrounds.jpg" />
+         </image>
+      </ImageView>
+       <Label fx:id="transitionLVL" layoutX="17.0" layoutY="14.0" prefHeight="23.0" prefWidth="98.0" text="Level 1" textFill="WHITE">
            <font>
                <Font name="Courier New Bold" size="18.0" />
            </font>
        </Label>
-       <Label alignment="TOP_RIGHT" layoutX="488.0" layoutY="15.0" prefHeight="23.0" prefWidth="98.0" text="Score">
+       <Label fx:id="score" alignment="TOP_RIGHT" layoutX="488.0" layoutY="15.0" prefHeight="23.0" prefWidth="98.0" text="Score" textFill="WHITE">
            <font>
                <Font name="Courier New Bold" size="18.0" />
            </font>
        </Label>
-      <Label fx:id="ScaleValue" layoutX="146.0" layoutY="295.0" prefHeight="20.0" prefWidth="143.0" text="Scale Value  :">
+      <Label fx:id="ScaleValue" layoutX="146.0" layoutY="295.0" prefHeight="20.0" prefWidth="143.0" text="Scale Value  :" textFill="WHITE">
          <font>
-            <Font name="Courier New" size="14.0" />
+            <Font name="Courier New Bold" size="14.0" />
          </font>
       </Label>
       <TextField fx:id="enterScalevVal" layoutX="289.0" layoutY="291.0" />
-       <Label layoutX="274.0" layoutY="229.0" text="Answer:">
+       <Label layoutX="274.0" layoutY="229.0" text="Answer:" textFill="WHITE">
            <font>
-               <Font name="Courier New" size="14.0" />
+               <Font name="Courier New Bold" size="14.0" />
            </font>
        </Label>
-      <Button layoutX="287.0" layoutY="353.0" mnemonicParsing="false" text="Check" />
+      <Button layoutX="279.0" layoutY="359.0" mnemonicParsing="false" text="Check" />
    </children>
 </AnchorPane>

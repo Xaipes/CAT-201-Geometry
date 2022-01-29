@@ -8,8 +8,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
 public class HelloController {
@@ -21,13 +24,9 @@ public class HelloController {
     @FXML
     private TextField enterPoints;
     @FXML
-    private Button confirmPoint;
+    private Button confirmPoint, homeButton;
     @FXML
-    private ImageView imgSuccess;
-
-//    public ImageView getImgSuccess() {
-//        return imgSuccess;
-//    }
+    private ImageView imgSuccess, BckgroundView;
 
     int points;
 
@@ -105,7 +104,11 @@ public class HelloController {
         //There is a label with #errorMSG
     }
 
-    public ImageView getImgSuccess(MouseEvent mouseEvent) {
-        return imgSuccess;
+    //Connecting Back to homepage
+    public void GoToHome(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+
+        Stage window = (Stage)homeButton.getScene().getWindow();
+        window.setScene(new Scene(fxmlLoader.load(), 600, 400));
     }
 }

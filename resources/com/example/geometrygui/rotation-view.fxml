@@ -37,10 +37,10 @@
          </font>
       </Label>
       <Button layoutX="283.0" layoutY="355.0" mnemonicParsing="false" text="Check" />
-      <MenuButton fx:id="relectedOnBtn" layoutX="275.0" layoutY="297.0" mnemonicParsing="false" text="Select">
+      <MenuButton fx:id="rotationBtn" layoutX="275.0" layoutY="297.0" mnemonicParsing="false" text="Select">
          <items>
             <MenuItem mnemonicParsing="false" text="90 Degree" />
-            <MenuItem mnemonicParsing="false" text="180Degree" />
+            <MenuItem mnemonicParsing="false" text="180 Degree" />
             <MenuItem mnemonicParsing="false" text="360 Degree" />
          </items>
       </MenuButton>

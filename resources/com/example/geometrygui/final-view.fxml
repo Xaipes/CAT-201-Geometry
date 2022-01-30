@@ -28,7 +28,7 @@
             <Font name="Courier New Bold" size="36.0" />
          </font>
       </Text>
-      <Label fx:id="score" layoutX="175.0" layoutY="163.0" prefHeight="113.0" prefWidth="250.0" textFill="WHITE">
+      <Label fx:id="Finalscore" layoutX="117.0" layoutY="163.0" prefHeight="114.0" prefWidth="364.0" textFill="WHITE">
          <font>
             <Font name="Courier New" size="96.0" />
          </font>

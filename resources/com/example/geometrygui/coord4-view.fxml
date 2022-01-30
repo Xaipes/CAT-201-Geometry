@@ -27,9 +27,9 @@
             <Font name="Courier New" size="22.0" />
          </font>
       </Text>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b8d1ff45" height="480.0" layoutX="77.0" layoutY="96.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="486.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b8d1ff45" height="506.0" layoutX="77.0" layoutY="96.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="486.0" />
       <TextField fx:id="enterCoordx1" layoutX="339.0" layoutY="164.0" onAction="#enterCoordx" prefHeight="25.0" prefWidth="67.0" />
-      <Button fx:id="coordButton" layoutX="275.0" layoutY="592.0" mnemonicParsing="false" onAction="#handlecoordButton" prefHeight="23.0" prefWidth="90.0" text="Next">
+      <Button fx:id="coordButton" layoutX="275.0" layoutY="621.0" mnemonicParsing="false" onAction="#handlecoordButton" prefHeight="23.0" prefWidth="90.0" text="Next">
          <font>
             <Font name="Courier New" size="12.0" />
          </font>
@@ -50,53 +50,53 @@
             <Font name="Courier New" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="coordx11" alignment="TOP_CENTER" layoutX="256.0" layoutY="250.0" prefHeight="34.0" prefWidth="125.0" text="POINT 2" textFill="WHITE">
+      <Label fx:id="coordx11" alignment="TOP_CENTER" layoutX="256.0" layoutY="253.0" prefHeight="34.0" prefWidth="125.0" text="POINT 2" textFill="WHITE">
          <font>
             <Font name="Courier New" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="enterCoordx2" layoutX="339.0" layoutY="272.0" onAction="#enterCoordx" prefHeight="25.0" prefWidth="67.0" />
-      <TextField fx:id="enterCoordy2" layoutX="339.0" layoutY="307.0" onAction="#enterCoordy" prefHeight="25.0" prefWidth="67.0" />
-      <Label fx:id="coordx2" layoutX="213.0" layoutY="267.0" prefHeight="34.0" prefWidth="125.0" text="Coordinate x:" textFill="WHITE">
+      <TextField fx:id="enterCoordx2" layoutX="339.0" layoutY="277.0" onAction="#enterCoordx" prefHeight="25.0" prefWidth="67.0" />
+      <TextField fx:id="enterCoordy2" layoutX="339.0" layoutY="312.0" onAction="#enterCoordy" prefHeight="25.0" prefWidth="67.0" />
+      <Label fx:id="coordx2" layoutX="213.0" layoutY="272.0" prefHeight="34.0" prefWidth="125.0" text="Coordinate x:" textFill="WHITE">
          <font>
             <Font name="Courier New" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="coordy1" layoutX="214.0" layoutY="417.0" text="Coordinate y:" textFill="WHITE">
+      <Label fx:id="coordy1" layoutX="214.0" layoutY="429.0" text="Coordinate y:" textFill="WHITE">
          <font>
             <Font name="Courier New" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="coordx111" alignment="TOP_CENTER" layoutX="255.0" layoutY="357.0" prefHeight="34.0" prefWidth="125.0" text="POINT 3" textFill="WHITE">
+      <Label fx:id="coordx111" alignment="TOP_CENTER" layoutX="255.0" layoutY="365.0" prefHeight="34.0" prefWidth="125.0" text="POINT 3" textFill="WHITE">
          <font>
             <Font name="Courier New" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="enterCoordx3" layoutX="338.0" layoutY="379.0" onAction="#enterCoordx" prefHeight="25.0" prefWidth="67.0" />
-      <TextField fx:id="enterCoordy3" layoutX="338.0" layoutY="414.0" onAction="#enterCoordy" prefHeight="25.0" prefWidth="67.0" />
-      <Label fx:id="coordx21" layoutX="212.0" layoutY="374.0" prefHeight="34.0" prefWidth="125.0" text="Coordinate x:" textFill="WHITE">
+      <TextField fx:id="enterCoordx3" layoutX="338.0" layoutY="391.0" onAction="#enterCoordx" prefHeight="25.0" prefWidth="67.0" />
+      <TextField fx:id="enterCoordy3" layoutX="338.0" layoutY="426.0" onAction="#enterCoordy" prefHeight="25.0" prefWidth="67.0" />
+      <Label fx:id="coordx21" layoutX="212.0" layoutY="386.0" prefHeight="34.0" prefWidth="125.0" text="Coordinate x:" textFill="WHITE">
          <font>
             <Font name="Courier New" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="coordy11" layoutX="213.0" layoutY="310.0" text="Coordinate y:" textFill="WHITE">
+      <Label fx:id="coordy11" layoutX="213.0" layoutY="315.0" text="Coordinate y:" textFill="WHITE">
          <font>
             <Font name="Courier New" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="coordy12" layoutX="205.0" layoutY="534.0" text="Coordinate y:" textFill="WHITE">
+      <Label fx:id="coordy12" layoutX="215.0" layoutY="543.0" text="Coordinate y:" textFill="WHITE">
          <font>
             <Font name="Courier New" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="coordx1111" alignment="TOP_CENTER" layoutX="246.0" layoutY="474.0" prefHeight="34.0" prefWidth="125.0" text="POINT 4" textFill="WHITE">
+      <Label fx:id="coordx1111" alignment="TOP_CENTER" layoutX="246.0" layoutY="479.0" prefHeight="34.0" prefWidth="125.0" text="POINT 4" textFill="WHITE">
          <font>
             <Font name="Courier New" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="enterCoordx4" layoutX="329.0" layoutY="496.0" onAction="#enterCoordx" prefHeight="25.0" prefWidth="67.0" />
-      <TextField fx:id="enterCoordy4" layoutX="329.0" layoutY="531.0" onAction="#enterCoordy" prefHeight="25.0" prefWidth="67.0" />
-      <Label fx:id="coordx211" layoutX="203.0" layoutY="491.0" prefHeight="34.0" prefWidth="125.0" text="Coordinate x:" textFill="WHITE">
+      <TextField fx:id="enterCoordx4" layoutX="339.0" layoutY="505.0" onAction="#enterCoordx" prefHeight="25.0" prefWidth="67.0" />
+      <TextField fx:id="enterCoordy4" layoutX="339.0" layoutY="540.0" onAction="#enterCoordy" prefHeight="25.0" prefWidth="67.0" />
+      <Label fx:id="coordx211" layoutX="213.0" layoutY="500.0" prefHeight="34.0" prefWidth="125.0" text="Coordinate x:" textFill="WHITE">
          <font>
             <Font name="Courier New" size="15.0" />
          </font>

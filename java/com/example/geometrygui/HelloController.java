@@ -4,6 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
@@ -43,44 +46,8 @@ public class HelloController {
     private MenuButton reflectedOnBtn, rotationBtn;
     @FXML
     private ImageView imgSuccess, BckgroundView;
-
-
-    // SUBMITTING THE POINTS
-    public void submit(ActionEvent event){
-
-        try {
-            HelloApplication.set_number_of_points(Integer.parseInt(enterPoints.getText()));
-
-            if(HelloApplication.get_number_of_points() >= 6 || HelloApplication.get_number_of_points() <= 2){
-                validateMSG.setText("Please enter number between 3-5");
-            }else if(HelloApplication.get_number_of_points() == 3){
-
-                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("coord3-view.fxml"));
-
-                Stage window = (Stage)confirmPoint.getScene().getWindow();
-                window.setScene(new Scene(fxmlLoader.load(), 600, 550));
-            }else if(HelloApplication.get_number_of_points() == 4){
-
-                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("coord4-view.fxml"));
-
-                Stage window = (Stage)confirmPoint.getScene().getWindow();
-                window.setScene(new Scene(fxmlLoader.load(), 600, 650));
-            }else if(HelloApplication.get_number_of_points() == 5){
-
-                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("coord5-view.fxml"));
-
-                Stage window = (Stage)confirmPoint.getScene().getWindow();
-                window.setScene(new Scene(fxmlLoader.load(), 600, 800));
-            }
-        }
-        catch(NumberFormatException e){
-            //System.out.print("Enter only number!");
-            validateMSG.setText("Enter only number!");
-        }
-        catch(Exception e) {
-            System.out.print(e);
-        }
-    }
+//    @FXML
+//    private static LineChart CartesianPlane;
 
     //HOMEPAGE START BUTTON
     public void handlestartbtn() throws Exception {
@@ -88,7 +55,7 @@ public class HelloController {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("coord4-view.fxml"));
 
         Stage window = (Stage)startButton.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load(), 600, 400));
+        window.setScene(new Scene(fxmlLoader.load(), 600, 650));
 
     }
 
@@ -142,6 +109,9 @@ public class HelloController {
         coordinates_input(Integer.parseInt(enterCoordx3.getText()), Integer.parseInt(enterCoordy3.getText()), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
         coordinates_input(Integer.parseInt(enterCoordx4.getText()), Integer.parseInt(enterCoordy4.getText()), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
 
+        //Set the number of points to 4
+        HelloApplication.set_number_of_points(4);
+
         //Generate a random number between -10 and 10
         HelloApplication.set_rand_1(-10, 10);
         HelloApplication.set_rand_2(-10, 10);
@@ -149,12 +119,13 @@ public class HelloController {
         //Update the coordinates of the image shape for the first translation round
         translation(HelloApplication.get_rand_1(), HelloApplication.get_rand_2(), HelloApplication.get_number_of_points(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
 
-        System.out.print(HelloApplication.get_plot_x());
-        System.out.print(HelloApplication.get_plot_y());
-        System.out.print("\n");
-        System.out.print(HelloApplication.get_plot_x_image());
-        System.out.print(HelloApplication.get_plot_y_image());
-        System.out.print("\n");
+//        System.out.print(HelloApplication.get_plot_x());
+//        System.out.print(HelloApplication.get_plot_y());
+//        System.out.print("\n");
+//        System.out.print(HelloApplication.get_plot_x_image());
+//        System.out.print(HelloApplication.get_plot_y_image());
+//        System.out.print("\n");
+
 
         //Display the graph and request answers
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("translation-view.fxml"));
@@ -645,4 +616,29 @@ public class HelloController {
         reset_image(number_of_points_alt, plot_x_alt, plot_y_alt, plot_x_image_alt, plot_y_image_alt);
 
     }
+
+    //Generate shape
+//    public static void generate_shape(ArrayList<Integer> plot_x_alt, ArrayList<Integer> plot_y_alt, ArrayList<Integer> plot_x_image_alt, ArrayList<Integer> plot_y_image_alt){
+//
+//        //Prepare XYChart.Series objects by setting data
+//        XYChart.Series series = new XYChart.Series();
+//        series.setName("Ori");
+//
+//        series.getData().add(new XYChart.Data(plot_x_alt.get(0), plot_y_alt.get(0)));
+//        series.getData().add(new XYChart.Data(plot_x_alt.get(1), plot_y_alt.get(1)));
+//        series.getData().add(new XYChart.Data(plot_x_alt.get(2), plot_y_alt.get(2)));
+//        series.getData().add(new XYChart.Data(plot_x_alt.get(3), plot_y_alt.get(3)));
+//
+//        XYChart.Series series2 = new XYChart.Series();
+//        series2.setName("IMG");
+//
+//        series2.getData().add(new XYChart.Data(plot_x_image_alt.get(0), plot_y_alt.get(0)));
+//        series2.getData().add(new XYChart.Data(plot_x_image_alt.get(1), plot_y_alt.get(1)));
+//        series2.getData().add(new XYChart.Data(plot_x_image_alt.get(2), plot_y_alt.get(2)));
+//        series2.getData().add(new XYChart.Data(plot_x_image_alt.get(3), plot_y_alt.get(3)));
+//
+//        //Setting the data to Line chart
+//        CartesianPlane.getData().add(series);
+//        CartesianPlane.getData().add(series2);
+//    }
 }

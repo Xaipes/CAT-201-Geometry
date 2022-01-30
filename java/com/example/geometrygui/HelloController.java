@@ -47,6 +47,7 @@ public class HelloController {
     @FXML
     private ImageView imgSuccess, BckgroundView;
 
+
 //    @FXML
 //    private static LineChart CartesianPlane;
 
@@ -161,6 +162,7 @@ public class HelloController {
             catch(Exception e) {
             System.out.print(e);
         }
+
     }
 
     //TRANSLATION ANSWER CHECK AND NEXT ROUND
@@ -420,9 +422,7 @@ public class HelloController {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("final-view.fxml"));
             Stage window = (Stage)rotationCheck.getScene().getWindow();
             window.setScene(new Scene(fxmlLoader.load(), 600, 400));
-
-
-
+            
         }
     }
 
@@ -482,9 +482,12 @@ public class HelloController {
         int temp_x;
         int temp_y;
 
+
+
         //Create a loop to update the coordinate values after translation
         for(int i = 0; i < number_of_points_alt; i++)
         {
+
             //Update x value
             temp_x = x_coord.get(i) + trans_x;
             x_coord.set(i, temp_x);

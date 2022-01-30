@@ -36,12 +36,12 @@
             <Font name="Courier New" size="14.0" />
          </font>
       </Label>
-      <Button layoutX="283.0" layoutY="355.0" mnemonicParsing="false" text="Check" />
-      <MenuButton fx:id="rotationBtn" layoutX="275.0" layoutY="297.0" mnemonicParsing="false" text="Select">
+      <Button fx:id="rotationCheck" layoutX="283.0" layoutY="355.0" mnemonicParsing="false" onAction="#handlerotationCheck" text="Check" />
+      <MenuButton fx:id="rotationBtn" layoutX="261.0" layoutY="306.0" mnemonicParsing="false" text="90 Degrees">
          <items>
-            <MenuItem mnemonicParsing="false" text="90 Degree" />
-            <MenuItem mnemonicParsing="false" text="180 Degree" />
-            <MenuItem mnemonicParsing="false" text="360 Degree" />
+            <MenuItem mnemonicParsing="false" onAction="#handle90" text="90 Degrees" />
+            <MenuItem mnemonicParsing="false" onAction="#handle180" text="180 Degrees" />
+            <MenuItem mnemonicParsing="false" onAction="#handle270" text="270 Degrees" />
          </items>
       </MenuButton>
    </children>

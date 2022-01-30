@@ -38,16 +38,16 @@
                <Font name="Courier New Bold" size="14.0" />
            </font>
        </Label>
-      <Button layoutX="275.0" layoutY="352.0" mnemonicParsing="false" text="Check" />
+      <Button fx:id="reflectionCheck" layoutX="275.0" layoutY="352.0" mnemonicParsing="false" onAction="#handlereflectionCheck" text="Check" />
       <Label fx:id="AxisVal" layoutX="286.0" layoutY="292.0" prefHeight="20.0" prefWidth="143.0" text="Axis Value  :" textFill="WHITE">
          <font>
             <Font name="Courier New Bold" size="14.0" />
          </font>
       </Label>
-      <MenuButton fx:id="reflectedOnBtn" layoutX="86.0" layoutY="315.0" mnemonicParsing="false" text="Select">
+      <MenuButton fx:id="reflectedOnBtn" layoutX="86.0" layoutY="315.0" mnemonicParsing="false" text="X-Axis">
         <items>
-          <MenuItem fx:id="Xaxis" mnemonicParsing="false" text="X-Axis" />
-          <MenuItem fx:id="Yaxis" mnemonicParsing="false" text="Y-Axis" />
+          <MenuItem fx:id="Xaxis" mnemonicParsing="false" onAction="#handleX" text="X-Axis" />
+          <MenuItem fx:id="Yaxis" mnemonicParsing="false" onAction="#handleY" text="Y-Axis" />
         </items>
       </MenuButton>
    </children>

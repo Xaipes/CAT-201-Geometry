@@ -30,12 +30,12 @@
             <Font name="Courier New Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="enterScalevVal" layoutX="289.0" layoutY="291.0" />
+      <TextField fx:id="enterScaleVal" layoutX="289.0" layoutY="291.0" />
        <Label layoutX="274.0" layoutY="229.0" text="Answer:" textFill="WHITE">
            <font>
                <Font name="Courier New Bold" size="14.0" />
            </font>
        </Label>
-      <Button layoutX="279.0" layoutY="359.0" mnemonicParsing="false" text="Check" />
+      <Button fx:id="scalingCheck" layoutX="279.0" layoutY="359.0" mnemonicParsing="false" onAction="#handlescalingCheck" text="Check" />
    </children>
 </AnchorPane>

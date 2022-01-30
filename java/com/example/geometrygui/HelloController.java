@@ -6,14 +6,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 
 public class HelloController {
@@ -21,75 +20,53 @@ public class HelloController {
     //Create the player object
     static Player player_1 = new Player();
 
-    //Create the variables and arrays to store information for the Shape
-    int number_of_points;
-    ArrayList<Integer> plot_x = new ArrayList<Integer>();
-    ArrayList<Integer> plot_y = new ArrayList<Integer>();
-    ArrayList<Integer> plot_x_image = new ArrayList<Integer>();
-    ArrayList<Integer> plot_y_image = new ArrayList<Integer>();
+    //Create variables to check the number of rounds
+    static int round_number = 1;
+    static int translation_round_number = 4;
+    static int scaling_round_number = 4;
+    static int reflection_round_number = 4;
+    static int rotation_round_number = 4;
 
+
+    //Declare JavaFX objects
     @FXML
-    Button ruleButton, backButton,startButton;
+    private Label validateMSG, score;
     @FXML
-    private Label validateMSG;
+    private TextField enterPoints, enterXaxis, enterYaxis, enterScaleVal, enterAxisVal;
     @FXML
-    private TextField enterPoints;
+    private TextField enterCoordx1, enterCoordx2, enterCoordx3, enterCoordx4;
     @FXML
-    private static TextField enterXaxis;
+    private TextField enterCoordy1, enterCoordy2, enterCoordy3, enterCoordy4;
     @FXML
-    private static TextField enterYaxis;
+    private Button ruleButton, backButton,startButton,homeButton, coordButton, confirmPoint, translationCheck, scalingCheck, reflectionCheck, rotationCheck;
     @FXML
-    private static TextField enterScalevVal;
-    @FXML
-    private static TextField enterAxisVal;
-    @FXML
-    private Button confirmPoint;
-    @FXML
-    private Button homeButton;
-    @FXML
-    private static Button rotationBtn;
-    @FXML
-    private static Button reflectedOnBtn;
+    private MenuButton reflectedOnBtn, rotationBtn;
     @FXML
     private ImageView imgSuccess, BckgroundView;
-    @FXML
-    private static TextField enterCoordx1;
-    @FXML
-    private static TextField enterCoordx2;
-    @FXML
-    private static TextField enterCoordx3;
-    @FXML
-    private static TextField enterCoordx4;
-    @FXML
-    private static TextField enterCoordy1;
-    @FXML
-    private static TextField enterCoordy2;
-    @FXML
-    private static TextField enterCoordy3;
-    @FXML
-    private static TextField enterCoordy4;
-
 
 
     // SUBMITTING THE POINTS
     public void submit(ActionEvent event){
 
         try {
-            number_of_points = Integer.parseInt(enterPoints.getText());
+            HelloApplication.set_number_of_points(Integer.parseInt(enterPoints.getText()));
 
-            if(number_of_points >= 6 || number_of_points <= 2){
+            if(HelloApplication.get_number_of_points() >= 6 || HelloApplication.get_number_of_points() <= 2){
                 validateMSG.setText("Please enter number between 3-5");
-            }else if(number_of_points == 3){
+            }else if(HelloApplication.get_number_of_points() == 3){
+
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("coord3-view.fxml"));
 
                 Stage window = (Stage)confirmPoint.getScene().getWindow();
                 window.setScene(new Scene(fxmlLoader.load(), 600, 550));
-            }else if(number_of_points == 4){
+            }else if(HelloApplication.get_number_of_points() == 4){
+
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("coord4-view.fxml"));
 
                 Stage window = (Stage)confirmPoint.getScene().getWindow();
                 window.setScene(new Scene(fxmlLoader.load(), 600, 650));
-            }else if(number_of_points == 5){
+            }else if(HelloApplication.get_number_of_points() == 5){
+
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("coord5-view.fxml"));
 
                 Stage window = (Stage)confirmPoint.getScene().getWindow();
@@ -108,7 +85,7 @@ public class HelloController {
     //HOMEPAGE START BUTTON
     public void handlestartbtn() throws Exception {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("points-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("coord4-view.fxml"));
 
         Stage window = (Stage)startButton.getScene().getWindow();
         window.setScene(new Scene(fxmlLoader.load(), 600, 400));
@@ -134,6 +111,322 @@ public class HelloController {
         window.setScene(new Scene(fxmlLoader.load(), 600, 400));
     }
 
+    //REFLECTION MENU BUTTON X-AXIS
+    public void handleX() throws Exception {
+        reflectedOnBtn.setText("X-Axis");
+    }
+    //REFLECTION MENU BUTTON X-AXIS
+    public void handleY() throws Exception {
+        reflectedOnBtn.setText("Y-Axis");
+    }
+
+    //ROTATION MENU BUTTON 90 DEGREES
+    public void handle90() throws Exception {
+        rotationBtn.setText("90 Degrees");
+    }
+    //ROTATION MENU BUTTON 90 DEGREES
+    public void handle180() throws Exception {
+        rotationBtn.setText("180 Degrees");
+    }
+    //ROTATION MENU BUTTON 90 DEGREES
+    public void handle270() throws Exception {
+        rotationBtn.setText("270 Degrees");
+    }
+
+    //START TRANSLATION ROUND
+    public void handlecoordButton() throws Exception {
+
+        //Update the coordinates of the original and image shape
+        coordinates_input(Integer.parseInt(enterCoordx1.getText()), Integer.parseInt(enterCoordy1.getText()), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+        coordinates_input(Integer.parseInt(enterCoordx2.getText()), Integer.parseInt(enterCoordy2.getText()), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+        coordinates_input(Integer.parseInt(enterCoordx3.getText()), Integer.parseInt(enterCoordy3.getText()), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+        coordinates_input(Integer.parseInt(enterCoordx4.getText()), Integer.parseInt(enterCoordy4.getText()), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+
+        //Generate a random number between -10 and 10
+        HelloApplication.set_rand_1(-10, 10);
+        HelloApplication.set_rand_2(-10, 10);
+
+        //Update the coordinates of the image shape for the first translation round
+        translation(HelloApplication.get_rand_1(), HelloApplication.get_rand_2(), HelloApplication.get_number_of_points(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+
+        System.out.print(HelloApplication.get_plot_x());
+        System.out.print(HelloApplication.get_plot_y());
+        System.out.print("\n");
+        System.out.print(HelloApplication.get_plot_x_image());
+        System.out.print(HelloApplication.get_plot_y_image());
+        System.out.print("\n");
+
+        //Display the graph and request answers
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("translation-view.fxml"));
+        Stage window = (Stage)coordButton.getScene().getWindow();
+        window.setScene(new Scene(fxmlLoader.load(), 600, 400));
+
+
+    }
+
+    //TRANSLATION ANSWER CHECK AND NEXT ROUND
+    public void handletranslationCheck() throws Exception {
+
+        //Launch Translation Levels again until total rounds has been reached
+        if (round_number < translation_round_number)
+        {
+            //Check user's answers for translation
+            translation_rounds(Integer.parseInt(enterXaxis.getText()), Integer.parseInt(enterYaxis.getText()), HelloApplication.get_rand_1(), HelloApplication.get_rand_2(), HelloApplication.get_number_of_points(), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+
+            System.out.print(player_1.get_player_score());
+
+            //Generate new set of rng values for the next translation round
+            HelloApplication.set_rand_1(-10, 10);
+            HelloApplication.set_rand_2(-10, 10);
+
+            //Generate new translated image
+            translation(HelloApplication.get_rand_1(), HelloApplication.get_rand_2(), HelloApplication.get_number_of_points(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+
+            //Increase the round counter for the next round
+            round_number = round_number + 1;
+
+            //Display the translation scene again
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("translation-view.fxml"));
+            Stage window = (Stage)translationCheck.getScene().getWindow();
+            window.setScene(new Scene(fxmlLoader.load(), 600, 400));
+
+            System.out.print(HelloApplication.get_plot_x());
+            System.out.print(HelloApplication.get_plot_y());
+            System.out.print("\n");
+            System.out.print(HelloApplication.get_plot_x_image());
+            System.out.print(HelloApplication.get_plot_y_image());
+            System.out.print("\n");
+
+        }
+        else
+        {
+            //Check user's answers for translation
+            translation_rounds(Integer.parseInt(enterXaxis.getText()), Integer.parseInt(enterYaxis.getText()), HelloApplication.get_rand_1(), HelloApplication.get_rand_2(), HelloApplication.get_number_of_points(), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+
+            System.out.print(player_1.get_player_score());
+
+            //Generate new set of rng values for scaling round
+            HelloApplication.set_rand_1(-3, 3);
+
+            //Apply the rng scale factor to the image coordinates
+            scaling(HelloApplication.get_rand_1(), HelloApplication.get_plot_x().get(0), HelloApplication.get_plot_y().get(0), HelloApplication.get_number_of_points(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+
+            //reset the round number
+            round_number = 1;
+
+            System.out.print(HelloApplication.get_plot_x());
+            System.out.print(HelloApplication.get_plot_y());
+            System.out.print("\n");
+            System.out.print(HelloApplication.get_plot_x_image());
+            System.out.print(HelloApplication.get_plot_y_image());
+            System.out.print("\n");
+
+            //Display the scaling scene
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("scaling-view.fxml"));
+            Stage window = (Stage)translationCheck.getScene().getWindow();
+            window.setScene(new Scene(fxmlLoader.load(), 600, 400));
+
+        }
+    }
+
+    //SCALING ANSWER CHECK AND NEXT ROUND
+    public void handlescalingCheck() throws Exception {
+
+        //Launch Scaling Levels again until total rounds has been reached
+        if (round_number < scaling_round_number)
+        {
+            //Check user's answers for scaling
+            scaling_rounds(Integer.parseInt(enterScaleVal.getText()), HelloApplication.get_rand_1(), HelloApplication.get_number_of_points(), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+
+            System.out.print(player_1.get_player_score());
+
+            //Generate new value for scaling
+            HelloApplication.set_rand_1(-3, 3);
+
+            //Generate new scaled image
+            scaling(HelloApplication.get_rand_1(), HelloApplication.get_plot_x().get(0), HelloApplication.get_plot_y().get(0), HelloApplication.get_number_of_points(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+
+            //Increase the round counter for the next round
+            round_number = round_number + 1;
+
+            //Display the scaling scene again
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("scaling-view.fxml"));
+            Stage window = (Stage)scalingCheck.getScene().getWindow();
+            window.setScene(new Scene(fxmlLoader.load(), 600, 400));
+
+            System.out.print(HelloApplication.get_plot_x());
+            System.out.print(HelloApplication.get_plot_y());
+            System.out.print("\n");
+            System.out.print(HelloApplication.get_plot_x_image());
+            System.out.print(HelloApplication.get_plot_y_image());
+            System.out.print("\n");
+
+        }
+        else
+        {
+            //Check user's answers for scaling
+            scaling_rounds(Integer.parseInt(enterScaleVal.getText()), HelloApplication.get_rand_1(), HelloApplication.get_number_of_points(), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+
+            System.out.print(player_1.get_player_score());
+
+            //Generate new set of rng values for reflection round
+            HelloApplication.set_rand_1(-10, 10);
+            HelloApplication.set_rand_2(0, 1);
+
+            //Apply the reflection to the image coordinates
+            reflection(HelloApplication.get_rand_1(), HelloApplication.get_rand_2(), HelloApplication.get_number_of_points(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+
+            //reset the round number
+            round_number = 1;
+
+            System.out.print(HelloApplication.get_plot_x());
+            System.out.print(HelloApplication.get_plot_y());
+            System.out.print("\n");
+            System.out.print(HelloApplication.get_plot_x_image());
+            System.out.print(HelloApplication.get_plot_y_image());
+            System.out.print("\n");
+
+            //Display the reflection scene
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("reflection-view.fxml"));
+            Stage window = (Stage)scalingCheck.getScene().getWindow();
+            window.setScene(new Scene(fxmlLoader.load(), 600, 400));
+
+        }
+    }
+
+    //REFLECTION ANSWER CHECK AND NEXT ROUND
+    public void handlereflectionCheck() throws Exception {
+
+        //Launch Reflection Levels again until total rounds has been reached
+        if (round_number < reflection_round_number)
+        {
+            //Check user's answers for reflection
+            if (reflectedOnBtn.getText() == "Y-Axis")
+                reflection_rounds(Integer.parseInt(enterAxisVal.getText()), 0,  HelloApplication.get_number_of_points(), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+            else
+                reflection_rounds(Integer.parseInt(enterAxisVal.getText()), 1,  HelloApplication.get_number_of_points(), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+
+            System.out.print(player_1.get_player_score());
+
+            //Generate new values for reflection
+            HelloApplication.set_rand_1(-10, 10);
+            HelloApplication.set_rand_2(0, 1);
+
+            //Apply the reflection to the image coordinates
+            reflection(HelloApplication.get_rand_1(), HelloApplication.get_rand_2(), HelloApplication.get_number_of_points(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+
+            //Increase the round counter for the next round
+            round_number = round_number + 1;
+
+            //Display the reflection scene again
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("reflection-view.fxml"));
+            Stage window = (Stage)reflectionCheck.getScene().getWindow();
+            window.setScene(new Scene(fxmlLoader.load(), 600, 400));
+
+            System.out.print(HelloApplication.get_plot_x());
+            System.out.print(HelloApplication.get_plot_y());
+            System.out.print("\n");
+            System.out.print(HelloApplication.get_plot_x_image());
+            System.out.print(HelloApplication.get_plot_y_image());
+            System.out.print("\n");
+
+        }
+        else
+        {
+
+            //Check user's answers for reflection
+            if (reflectedOnBtn.getText() == "Y-Axis")
+                reflection_rounds(Integer.parseInt(enterAxisVal.getText()), 0, HelloApplication.get_number_of_points(),  HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+            else
+                reflection_rounds(Integer.parseInt(enterAxisVal.getText()), 1, HelloApplication.get_number_of_points(),  HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+
+            System.out.print(player_1.get_player_score());
+
+            //Generate new set of rng values for rotation round
+            HelloApplication.set_rand_1(1, 3);
+
+            //Apply the rotation to the image coordinates
+            rotation(HelloApplication.get_rand_1() * 90, HelloApplication.get_number_of_points(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+
+            //reset the round number
+            round_number = 1;
+
+            System.out.print(HelloApplication.get_plot_x());
+            System.out.print(HelloApplication.get_plot_y());
+            System.out.print("\n");
+            System.out.print(HelloApplication.get_plot_x_image());
+            System.out.print(HelloApplication.get_plot_y_image());
+            System.out.print("\n");
+
+            //Display the rotation scene
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("rotation-view.fxml"));
+            Stage window = (Stage)reflectionCheck.getScene().getWindow();
+            window.setScene(new Scene(fxmlLoader.load(), 600, 400));
+
+        }
+    }
+
+    //ROTATION ANSWER CHECK AND NEXT ROUND
+    public void handlerotationCheck() throws Exception {
+
+        //Launch Rotation Levels again until total rounds has been reached
+        if (round_number < rotation_round_number)
+        {
+            //Check user's answers for rotation
+            if (rotationBtn.getText() == "90 Degrees")
+                rotation_rounds(1, HelloApplication.get_number_of_points(), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+            else if (rotationBtn.getText() == "180 Degrees")
+                rotation_rounds(2, HelloApplication.get_number_of_points(), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+            else
+                rotation_rounds(3, HelloApplication.get_number_of_points(), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+
+            System.out.print(player_1.get_player_score());
+
+            //Generate new values for rotation
+            HelloApplication.set_rand_1(1, 3);
+
+            //Apply the rotation to the image coordinates
+            rotation(HelloApplication.get_rand_1() * 90, HelloApplication.get_number_of_points(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+
+            //Increase the round counter for the next round
+            round_number = round_number + 1;
+
+            //Display the rotation scene again
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("rotation-view.fxml"));
+            Stage window = (Stage)rotationCheck.getScene().getWindow();
+            window.setScene(new Scene(fxmlLoader.load(), 600, 400));
+
+            System.out.print(HelloApplication.get_plot_x());
+            System.out.print(HelloApplication.get_plot_y());
+            System.out.print("\n");
+            System.out.print(HelloApplication.get_plot_x_image());
+            System.out.print(HelloApplication.get_plot_y_image());
+            System.out.print("\n");
+
+        }
+        else
+        {
+            //Check user's answers for rotation
+            if (rotationBtn.getText() == "90 Degrees")
+                rotation_rounds(1, HelloApplication.get_number_of_points(), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+            else if (rotationBtn.getText() == "180 Degrees")
+                rotation_rounds(2, HelloApplication.get_number_of_points(), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+            else
+                rotation_rounds(3, HelloApplication.get_number_of_points(), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+
+            //Update the score label
+            score.setText(Integer.toString(player_1.get_player_score()));
+
+            //Display the final scene
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("final-view.fxml"));
+            Stage window = (Stage)rotationCheck.getScene().getWindow();
+            window.setScene(new Scene(fxmlLoader.load(), 600, 400));
+
+
+
+        }
+    }
+
     //INSERT COORDINATES
     public void enterCoordx(ActionEvent actionEvent) {
         //Validation
@@ -154,27 +447,15 @@ public class HelloController {
     }
 
     //Method to Receive Coordinates Input
-    public static void coordinates_input(int number_of_points_alt, ArrayList<Integer> plot_x_alt, ArrayList<Integer> plot_y_alt, ArrayList<Integer> plot_x_image_alt, ArrayList<Integer> plot_y_image_alt)
+    public static void coordinates_input(int temp_x, int temp_y, ArrayList<Integer> plot_x_alt, ArrayList<Integer> plot_y_alt, ArrayList<Integer> plot_x_image_alt, ArrayList<Integer> plot_y_image_alt)
     {
         //Assign the entered x coordinate values
-        plot_x_alt.add(Integer.parseInt(enterCoordx1.getText()));
-        plot_x_alt.add(Integer.parseInt(enterCoordx2.getText()));
-        plot_x_alt.add(Integer.parseInt(enterCoordx3.getText()));
-        plot_x_alt.add(Integer.parseInt(enterCoordx4.getText()));
-        plot_x_image_alt.add(Integer.parseInt(enterCoordx1.getText()));
-        plot_x_image_alt.add(Integer.parseInt(enterCoordx2.getText()));
-        plot_x_image_alt.add(Integer.parseInt(enterCoordx3.getText()));
-        plot_x_image_alt.add(Integer.parseInt(enterCoordx4.getText()));
+        plot_x_alt.add(temp_x);
+        plot_x_image_alt.add(temp_x);
 
-        //Assign the entered x coordinate values
-        plot_y_alt.add(Integer.parseInt(enterCoordy1.getText()));
-        plot_y_alt.add(Integer.parseInt(enterCoordy2.getText()));
-        plot_y_alt.add(Integer.parseInt(enterCoordy3.getText()));
-        plot_y_alt.add(Integer.parseInt(enterCoordy4.getText()));
-        plot_y_image_alt.add(Integer.parseInt(enterCoordy1.getText()));
-        plot_y_image_alt.add(Integer.parseInt(enterCoordy2.getText()));
-        plot_y_image_alt.add(Integer.parseInt(enterCoordy3.getText()));
-        plot_y_image_alt.add(Integer.parseInt(enterCoordy4.getText()));
+        //Assign the entered y coordinate values
+        plot_y_alt.add(temp_y);
+        plot_y_image_alt.add(temp_y);
 
     }
 
@@ -213,7 +494,6 @@ public class HelloController {
             temp_y = y_coord.get(i) + trans_y;
             y_coord.set(i, temp_y);
         }
-
     }
 
     //Method for Scaling
@@ -239,10 +519,10 @@ public class HelloController {
     }
 
     //Method for Reflection
-    public static void reflection(int axis_value, int is_vertical, int number_of_points_alt, ArrayList<Integer> x_coord, ArrayList<Integer> y_coord)
+    public static void reflection(int axis_value, int x_reflect, int number_of_points_alt, ArrayList<Integer> x_coord, ArrayList<Integer> y_coord)
     {
         //Perform calculations based on reflection type
-        if (is_vertical == 0)
+        if (x_reflect == 0)
         {
             //Create a temporary variable to store updated coordinate values
             int temp_x;
@@ -281,226 +561,88 @@ public class HelloController {
         double temp_x;
         double temp_y;
 
-        //Create temporary variables to store the old coordinate values
-        int old_x;
-        int old_y;
-
         //Create a loop to update the coordinate values after rotation
         for(int i = 0; i < number_of_points_alt; i++)
         {
-            //Store the old x and y coordinate values in the temporary variables
-            old_x = x_coord.get(i);
-            old_y = y_coord.get(i);
-
             //Update the x value
-            temp_x = (old_x * Math.cos(angle_rad)) - (old_y * Math.sin(angle_rad));
+            temp_x = (HelloApplication.get_plot_x().get(i) * Math.cos(angle_rad)) - (HelloApplication.get_plot_y().get(i) * Math.sin(angle_rad));
             x_coord.set(i, (int) Math.round(temp_x));
 
             //Update the y value
-            temp_y = (old_x * Math.sin(angle_rad)) + (old_y * Math.cos(angle_rad));
+            temp_y = (HelloApplication.get_plot_x().get(i) * Math.sin(angle_rad)) + (HelloApplication.get_plot_y().get(i) * Math.cos(angle_rad));
             y_coord.set(i, (int) Math.round(temp_y));
         }
     }
 
     //Method for Translation Rounds
-    public static void translation_rounds(int number_of_rounds, int number_of_points_alt, ArrayList<Integer> plot_x_alt, ArrayList<Integer> plot_y_alt, ArrayList<Integer> plot_x_image_alt, ArrayList<Integer> plot_y_image_alt)
+    public static void translation_rounds(int answer_x, int answer_y, int trans_x, int trans_y, int number_of_points_alt, ArrayList<Integer> plot_x_alt, ArrayList<Integer> plot_y_alt, ArrayList<Integer> plot_x_image_alt, ArrayList<Integer> plot_y_image_alt)
     {
-        //Set the minimum and maximum rng values
-        int min = -10;
-        int max = 10;
-
-        //Create a loop to run the translation stages a number of times
-        for (int round = 1; round <= number_of_rounds; round++)
-        {
-            //Generate a random set of numbers using the rng
-            int rand_1 = (int) (Math.floor (Math.random() * (max-min+1) + min));
-            int rand_2 = (int) (Math.floor (Math.random() * (max-min+1) + min));
-
-            //Update the coordinates of the image shape after applying translation
-            translation(rand_1, rand_2, number_of_points_alt, plot_x_image_alt, plot_y_image_alt);
-
-            //Print the original and image shapes' values
-            System.out.print("Original Shape: ");
-            System.out.print (plot_x_alt);
-            System.out.print(plot_y_alt + "\n");
-            System.out.print("Image Shape: ");
-            System.out.print (plot_x_image_alt);
-            System.out.print(plot_y_image_alt + "\n");
-
-            //Update answer with input from textbox
-            int answer_x = Integer.parseInt(enterXaxis.getText());
-            int answer_y = Integer.parseInt(enterYaxis.getText());
-
-            //Check the player's answer
-            if (answer_x == rand_1 && answer_y == rand_2){
-                player_1.set_player_is_correct(true);
-                System.out.print("Correct!\n");
-            }
-            else{
-                player_1.set_player_is_correct(false);
-                System.out.print("Wrong!\n");
-            }
-
-            //Calculate the player's score
-            player_1.set_player_score();
-
-            //Reset the coordinates of the image shape to match the original shape at the end of the round
-            reset_image(number_of_points_alt, plot_x_alt, plot_y_alt, plot_x_image_alt, plot_y_image_alt);
+        //Check the player's answer
+        if (answer_x == trans_x && answer_y == trans_y){
+            player_1.set_player_is_correct(true);
         }
+        else{
+            player_1.set_player_is_correct(false);
+        }
+
+        //Calculate the player's score
+        player_1.set_player_score();
+
+        //Reset the coordinates of the image shape to match the original shape at the end of the round
+        reset_image(number_of_points_alt, plot_x_alt, plot_y_alt, plot_x_image_alt, plot_y_image_alt);
+
     }
 
     //Method for Scaling Rounds
-    public static void scaling_rounds(int number_of_rounds, int number_of_points_alt, ArrayList<Integer> plot_x_alt, ArrayList<Integer> plot_y_alt, ArrayList<Integer> plot_x_image_alt, ArrayList<Integer> plot_y_image_alt)
+    public static void scaling_rounds(int answer, int scale_factor, int number_of_points_alt, ArrayList<Integer> plot_x_alt, ArrayList<Integer> plot_y_alt, ArrayList<Integer> plot_x_image_alt, ArrayList<Integer> plot_y_image_alt)
     {
-        //Set the minimum and maximum rng values
-        int min = 0;
-        int max = 10;
-
-        //Create a loop to run the scaling stages a number of times
-        for (int round = 1; round <= number_of_rounds; round++)
-        {
-            //Generate a random number using the rng
-            int rand = (int) (Math.floor (Math.random() * (max-min+1) + min));
-
-            //Update the coordinates of the image shape after applying translation
-            scaling(rand, plot_x_alt.get(0), plot_y_alt.get(0), number_of_points_alt, plot_x_image_alt, plot_y_image_alt);
-
-            //Print the original and image shapes' values
-            System.out.print("Original Shape: ");
-            System.out.print (plot_x_alt);
-            System.out.print(plot_y_alt + "\n");
-            System.out.print("Image Shape: ");
-            System.out.print (plot_x_image_alt);
-            System.out.print(plot_y_image_alt + "\n");
-
-            //Update answer with input from the textbox
-            int answer = Integer.parseInt(enterScalevVal.getText());
-
-            //Check the player's answer
-            if (answer == rand){
-                player_1.set_player_is_correct(true);
-                System.out.print("Correct!\n");
-            }
-            else{
-                player_1.set_player_is_correct(false);
-                System.out.print("Wrong!\n");
-            }
-
-            //Calculate the player's score
-            player_1.set_player_score();
-
-            //Reset the coordinates of the image shape to match the original shape at the end of the round
-            reset_image(number_of_points_alt, plot_x_alt, plot_y_alt, plot_x_image_alt, plot_y_image_alt);
+        //Check the player's answer
+        if (answer == scale_factor){
+            player_1.set_player_is_correct(true);
         }
+        else{
+            player_1.set_player_is_correct(false);
+        }
+
+        //Calculate the player's score
+        player_1.set_player_score();
+
+        //Reset the coordinates of the image shape to match the original shape at the end of the round
+        reset_image(number_of_points_alt, plot_x_alt, plot_y_alt, plot_x_image_alt, plot_y_image_alt);
+
     }
 
     //Method for Reflection Rounds
-    public static void reflection_rounds(int number_of_rounds, int number_of_points_alt, ArrayList<Integer> plot_x_alt, ArrayList<Integer> plot_y_alt, ArrayList<Integer> plot_x_image_alt, ArrayList<Integer> plot_y_image_alt)
+    public static void reflection_rounds(int answer_1, int answer_2, int number_of_points_alt, ArrayList<Integer> plot_x_alt, ArrayList<Integer> plot_y_alt, ArrayList<Integer> plot_x_image_alt, ArrayList<Integer> plot_y_image_alt)
     {
-        //Set the minimum and maximum rng values
-        int min_1 = -10;
-        int max_1 = 10;
-        int min_2 = 0;
-        int max_2 = 1;
+        //Check the player's answer
+        if (answer_1 == HelloApplication.get_rand_1() && answer_2 == HelloApplication.get_rand_2())
+            player_1.set_player_is_correct(true);
+        else
+            player_1.set_player_is_correct(false);
 
-        //Create a loop to run the scaling stages a number of times
-        for (int round = 1; round <= number_of_rounds; round++)
-        {
-            //Generate a random number using the rng
-            int rand_1 = (int) (Math.floor (Math.random() * (max_1-min_1+1) + min_1));
-            int rand_2 = (int) (Math.floor (Math.random() * (max_2-min_2+1) + min_2));
+        //Calculate the player's score
+        player_1.set_player_score();
 
-            //Update the coordinates of the image shape after applying translation
-            reflection(rand_1, rand_2, number_of_points_alt, plot_x_image_alt, plot_y_image_alt);
+        //Reset the coordinates of the image shape to match the original shape at the end of the round
+        reset_image(number_of_points_alt, plot_x_alt, plot_y_alt, plot_x_image_alt, plot_y_image_alt);
 
-            //Print the original and image shapes' values
-            System.out.print("Original Shape: ");
-            System.out.print (plot_x_alt);
-            System.out.print(plot_y_alt + "\n");
-            System.out.print("Image Shape: ");
-            System.out.print (plot_x_image_alt);
-            System.out.print(plot_y_image_alt + "\n");
-
-            //Update answer with input from the drop down menu and textbox
-            int answer_2;
-            if (reflectedOnBtn.getText() == "X-axis" ){
-                answer_2 = 0;
-            }
-            else{
-                answer_2 = 1;
-            }
-            int answer_1 = Integer.parseInt(enterAxisVal.getText());
-
-            //Check the player's answer
-            if (answer_1 == rand_1 && answer_2 == rand_2){
-                player_1.set_player_is_correct(true);
-                System.out.print("Correct!\n");
-            }
-            else{
-                player_1.set_player_is_correct(false);
-                System.out.print("Wrong!\n");
-            }
-
-            //Calculate the player's score
-            player_1.set_player_score();
-
-            //Reset the coordinates of the image shape to match the original shape at the end of the round
-            reset_image(number_of_points_alt, plot_x_alt, plot_y_alt, plot_x_image_alt, plot_y_image_alt);
-        }
     }
 
     //Method for Rotation Rounds
-    public static void rotation_rounds(int number_of_rounds, int number_of_points_alt, ArrayList<Integer> plot_x_alt, ArrayList<Integer> plot_y_alt, ArrayList<Integer> plot_x_image_alt, ArrayList<Integer> plot_y_image_alt)
+    public static void rotation_rounds(int answer, int number_of_points_alt, ArrayList<Integer> plot_x_alt, ArrayList<Integer> plot_y_alt, ArrayList<Integer> plot_x_image_alt, ArrayList<Integer> plot_y_image_alt)
     {
-        //Set the minimum and maximum rng values
-        int min = 0;
-        int max = 3;
+        //Check the player's answer
+        if (answer == HelloApplication.get_rand_1())
+            player_1.set_player_is_correct(true);
+        else
+            player_1.set_player_is_correct(false);
 
-        //Create a loop to run the scaling stages a number of times
-        for (int round = 1; round <= number_of_rounds; round++)
-        {
-            //Generate a random number using the rng and convert it to multiples of 90
-            int rand = (int) (Math.floor (Math.random() * (max-min+1) + min));
-            rand = rand * 90;
+        //Calculate the player's score
+        player_1.set_player_score();
 
-            //Update the coordinates of the image shape after applying translation
-            rotation(rand, number_of_points_alt, plot_x_image_alt, plot_y_image_alt);
-
-            //Print the original and image shapes' values
-            System.out.print("Original Shape: ");
-            System.out.print (plot_x_alt);
-            System.out.print(plot_y_alt + "\n");
-            System.out.print("Image Shape: ");
-            System.out.print (plot_x_image_alt);
-            System.out.print(plot_y_image_alt + "\n");
-
-            //Update answer with input from the drop down menu
-            int answer;
-            if (rotationBtn.getText() == "90 Degrees")
-                answer = 90;
-            else if (rotationBtn.getText() == "180 Degrees")
-                answer = 180;
-            else
-                answer = 270;
-
-            //Check the player's answer
-            if (answer == rand){
-                player_1.set_player_is_correct(true);
-                System.out.print("Correct!\n");
-            }
-            else{
-                player_1.set_player_is_correct(false);
-                System.out.print("Wrong!\n");
-            }
-
-            //Calculate the player's score
-            player_1.set_player_score();
-
-            //Reset the coordinates of the image shape to match the original shape at the end of the round
-            reset_image(number_of_points_alt, plot_x_alt, plot_y_alt, plot_x_image_alt, plot_y_image_alt);
-
-        }
-
+        //Reset the coordinates of the image shape to match the original shape at the end of the round
+        reset_image(number_of_points_alt, plot_x_alt, plot_y_alt, plot_x_image_alt, plot_y_image_alt);
 
     }
 }

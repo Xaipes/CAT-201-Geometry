@@ -29,7 +29,7 @@
       </Text>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b8d1ff45" height="480.0" layoutX="77.0" layoutY="96.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="486.0" />
       <TextField fx:id="enterCoordx1" layoutX="339.0" layoutY="164.0" onAction="#enterCoordx" prefHeight="25.0" prefWidth="67.0" />
-      <Button fx:id="coordButton" layoutX="275.0" layoutY="592.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="90.0" text="Next">
+      <Button fx:id="coordButton" layoutX="275.0" layoutY="592.0" mnemonicParsing="false" onAction="#handlecoordButton" prefHeight="23.0" prefWidth="90.0" text="Next">
          <font>
             <Font name="Courier New" size="12.0" />
          </font>

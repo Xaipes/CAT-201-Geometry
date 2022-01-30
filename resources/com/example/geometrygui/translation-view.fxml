@@ -42,6 +42,6 @@
       </Label>
       <TextField fx:id="enterXaxis" layoutX="139.0" layoutY="279.0" />
       <TextField fx:id="enterYaxis" layoutX="399.0" layoutY="278.0" />
-      <Button layoutX="280.0" layoutY="345.0" mnemonicParsing="false" text="Check" />
+      <Button fx:id="translationCheck" layoutX="280.0" layoutY="345.0" mnemonicParsing="false" onAction="#handletranslationCheck" text="Check" />
    </children>
 </AnchorPane>

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
@@ -26,23 +29,31 @@
             <Font name="Courier New Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="ScaleValue" alignment="TOP_CENTER" layoutX="230.0" layoutY="278.0" prefHeight="20.0" prefWidth="163.0" text="Rotating Angle :" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="ScaleValue" alignment="TOP_CENTER" layoutX="230.0" layoutY="286.0" prefHeight="20.0" prefWidth="163.0" text="Rotating Angle :" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Courier New" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="282.0" layoutY="233.0" prefHeight="20.0" prefWidth="64.0" text="Answer:" textFill="WHITE">
+      <Label layoutX="282.0" layoutY="247.0" prefHeight="20.0" prefWidth="64.0" text="Answer:" textFill="WHITE">
          <font>
             <Font name="Courier New" size="14.0" />
          </font>
       </Label>
       <Button fx:id="rotationCheck" layoutX="283.0" layoutY="355.0" mnemonicParsing="false" onAction="#handlerotationCheck" text="Check" />
-      <MenuButton fx:id="rotationBtn" layoutX="261.0" layoutY="306.0" mnemonicParsing="false" text="90 Degrees">
+      <MenuButton fx:id="rotationBtn" layoutX="261.0" layoutY="310.0" mnemonicParsing="false" text="90 Degrees">
          <items>
             <MenuItem mnemonicParsing="false" onAction="#handle90" text="90 Degrees" />
             <MenuItem mnemonicParsing="false" onAction="#handle180" text="180 Degrees" />
             <MenuItem mnemonicParsing="false" onAction="#handle270" text="270 Degrees" />
          </items>
       </MenuButton>
+      <LineChart fx:id="CP_rotate" layoutX="131.0" layoutY="24.0" prefHeight="267.0" prefWidth="334.0">
+         <xAxis>
+            <CategoryAxis side="BOTTOM" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis side="LEFT" />
+         </yAxis>
+      </LineChart>
    </children>
 </AnchorPane>

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
@@ -27,28 +30,36 @@
                <Font name="Courier New Bold" size="18.0" />
            </font>
        </Label>
-      <Label fx:id="ScaleValue" layoutX="87.0" layoutY="293.0" prefHeight="20.0" prefWidth="143.0" text="Reflected On:" textFill="WHITE">
+      <Label fx:id="ScaleValue" layoutX="84.0" layoutY="304.0" prefHeight="20.0" prefWidth="143.0" text="Reflected On:" textFill="WHITE">
          <font>
             <Font name="Courier New Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="enterAxisVal" layoutX="405.0" layoutY="289.0" />
-       <Label layoutX="274.0" layoutY="229.0" text="Answer:" textFill="WHITE">
+      <TextField fx:id="enterAxisVal" layoutX="402.0" layoutY="300.0" />
+       <Label layoutX="270.0" layoutY="263.0" text="Answer:" textFill="WHITE">
            <font>
                <Font name="Courier New Bold" size="14.0" />
            </font>
        </Label>
       <Button fx:id="reflectionCheck" layoutX="275.0" layoutY="352.0" mnemonicParsing="false" onAction="#handlereflectionCheck" text="Check" />
-      <Label fx:id="AxisVal" layoutX="286.0" layoutY="292.0" prefHeight="20.0" prefWidth="143.0" text="Axis Value  :" textFill="WHITE">
+      <Label fx:id="AxisVal" layoutX="283.0" layoutY="303.0" prefHeight="20.0" prefWidth="143.0" text="Axis Value  :" textFill="WHITE">
          <font>
             <Font name="Courier New Bold" size="14.0" />
          </font>
       </Label>
-      <MenuButton fx:id="reflectedOnBtn" layoutX="86.0" layoutY="315.0" mnemonicParsing="false" text="X-Axis">
+      <MenuButton fx:id="reflectedOnBtn" layoutX="83.0" layoutY="326.0" mnemonicParsing="false" text="X-Axis">
         <items>
           <MenuItem fx:id="Xaxis" mnemonicParsing="false" onAction="#handleX" text="X-Axis" />
           <MenuItem fx:id="Yaxis" mnemonicParsing="false" onAction="#handleY" text="Y-Axis" />
         </items>
       </MenuButton>
+      <LineChart fx:id="CP_reflect" layoutX="119.0" layoutY="14.0" prefHeight="267.0" prefWidth="334.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
    </children>
 </AnchorPane>

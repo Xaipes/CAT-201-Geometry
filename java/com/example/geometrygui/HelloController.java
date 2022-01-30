@@ -33,7 +33,7 @@ public class HelloController {
 
     //Declare JavaFX objects
     @FXML
-    private Label validateMSG, score;
+    private Label validateMSG, score, errorMSG;
     @FXML
     private TextField enterPoints, enterXaxis, enterYaxis, enterScaleVal, enterAxisVal;
     @FXML
@@ -46,6 +46,7 @@ public class HelloController {
     private MenuButton reflectedOnBtn, rotationBtn;
     @FXML
     private ImageView imgSuccess, BckgroundView;
+
 //    @FXML
 //    private static LineChart CartesianPlane;
 
@@ -103,36 +104,63 @@ public class HelloController {
     //START TRANSLATION ROUND
     public void handlecoordButton() throws Exception {
 
-        //Update the coordinates of the original and image shape
-        coordinates_input(Integer.parseInt(enterCoordx1.getText()), Integer.parseInt(enterCoordy1.getText()), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
-        coordinates_input(Integer.parseInt(enterCoordx2.getText()), Integer.parseInt(enterCoordy2.getText()), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
-        coordinates_input(Integer.parseInt(enterCoordx3.getText()), Integer.parseInt(enterCoordy3.getText()), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
-        coordinates_input(Integer.parseInt(enterCoordx4.getText()), Integer.parseInt(enterCoordy4.getText()), HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+        int coordx1,coordx2,coordx3,coordx4;
+        int coordy1,coordy2,coordy3,coordy4;
+        //errorMSG
+        try{
+            //Check x-axis value
+            coordx1 = Integer.parseInt(enterCoordx1.getText());
+            coordx2 = Integer.parseInt(enterCoordx1.getText());
+            coordx3 = Integer.parseInt(enterCoordx1.getText());
+            coordx4 = Integer.parseInt(enterCoordx1.getText());
 
-        //Set the number of points to 4
-        HelloApplication.set_number_of_points(4);
+            //Check y-axis value
+            coordy1 = Integer.parseInt(enterCoordy1.getText());
+            coordy2 = Integer.parseInt(enterCoordy2.getText());
+            coordy3 = Integer.parseInt(enterCoordy3.getText());
+            coordy4 = Integer.parseInt(enterCoordy4.getText());
 
-        //Generate a random number between -10 and 10
-        HelloApplication.set_rand_1(-10, 10);
-        HelloApplication.set_rand_2(-10, 10);
+            if( coordx1 < -10 || coordx1 > 10 || coordx2 < -10 || coordx2 > 10 || coordx3 < -10 || coordx3 > 10 || coordx4 < -10  || coordx4 > 10 ||
+                    coordy1 < -10 || coordy1 > 10 || coordy2 < -10 || coordy2 > 10 || coordy3 < -10 || coordy3 > 10 || coordy4 < -10 || coordy4 > 10){
+                errorMSG.setText("Enter only s from -10 to 10 only!");
+            } else {
+                //Update the coordinates of the original and image shape
+                coordinates_input(coordx1, coordy1, HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+                coordinates_input(coordx2, coordy2, HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+                coordinates_input(coordx3, coordy3, HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+                coordinates_input(coordx4, coordy4, HelloApplication.get_plot_x(), HelloApplication.get_plot_y(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
 
-        //Update the coordinates of the image shape for the first translation round
-        translation(HelloApplication.get_rand_1(), HelloApplication.get_rand_2(), HelloApplication.get_number_of_points(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+                //Set the number of points to 4
+                HelloApplication.set_number_of_points(4);
 
-//        System.out.print(HelloApplication.get_plot_x());
-//        System.out.print(HelloApplication.get_plot_y());
-//        System.out.print("\n");
-//        System.out.print(HelloApplication.get_plot_x_image());
-//        System.out.print(HelloApplication.get_plot_y_image());
-//        System.out.print("\n");
+                //Generate a random number between -10 and 10
+                HelloApplication.set_rand_1(-10, 10);
+                HelloApplication.set_rand_2(-10, 10);
+
+                //Update the coordinates of the image shape for the first translation round
+                translation(HelloApplication.get_rand_1(), HelloApplication.get_rand_2(), HelloApplication.get_number_of_points(), HelloApplication.get_plot_x_image(), HelloApplication.get_plot_y_image());
+
+                System.out.print(HelloApplication.get_plot_x());
+                System.out.print(HelloApplication.get_plot_y());
+                System.out.print("\n");
+                System.out.print(HelloApplication.get_plot_x_image());
+                System.out.print(HelloApplication.get_plot_y_image());
+                System.out.print("\n");
 
 
-        //Display the graph and request answers
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("translation-view.fxml"));
-        Stage window = (Stage)coordButton.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load(), 600, 400));
+                //Display the graph and request answers
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("translation-view.fxml"));
+                Stage window = (Stage)coordButton.getScene().getWindow();
+                window.setScene(new Scene(fxmlLoader.load(), 600, 400));
+            }
 
-
+        } catch(NumberFormatException e){
+        //System.out.print("Enter only number!");
+        errorMSG.setText("Enter only number!");
+        }
+            catch(Exception e) {
+            System.out.print(e);
+        }
     }
 
     //TRANSLATION ANSWER CHECK AND NEXT ROUND

@@ -1,5 +1,7 @@
 package com.example.geometrygui;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,10 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -44,12 +44,25 @@ public class HelloController {
     private Button ruleButton, backButton,startButton,homeButton, coordButton, confirmPoint, translationCheck, scalingCheck, reflectionCheck, rotationCheck;
     @FXML
     private MenuButton reflectedOnBtn, rotationBtn;
-    @FXML
-    private ImageView imgSuccess, BckgroundView;
-
-
 //    @FXML
-//    private static LineChart CartesianPlane;
+//    private ImageView imgSuccess, BckgroundView;
+//    @FXML
+//    private Label translateOriX,translateOriY,translateImgX,translateImgY;
+//    @FXML
+//    private Label scaleOriX,scaleOriY,scaleImgX,scaleImgY;
+//    @FXML
+//    private Label rotateOriX,rotateImgX, rotateOriY,rotateImgY;
+//    @FXML
+//    private Label reflectOriX,reflectImgX,reflectOriY,reflectImgY;
+//    @FXML
+//    private TableView<String> TransTable;
+//
+//    @FXML
+//    private TableColumn<Player, Integer> TransX, TransXImg,TransY,TransYImg;
+
+
+    @FXML
+    private static LineChart CartesianPlane;
 
     //HOMEPAGE START BUTTON
     public void handlestartbtn() throws Exception {
@@ -191,12 +204,30 @@ public class HelloController {
             Stage window = (Stage)translationCheck.getScene().getWindow();
             window.setScene(new Scene(fxmlLoader.load(), 600, 400));
 
-            System.out.print(HelloApplication.get_plot_x());
-            System.out.print(HelloApplication.get_plot_y());
-            System.out.print("\n");
-            System.out.print(HelloApplication.get_plot_x_image());
-            System.out.print(HelloApplication.get_plot_y_image());
-            System.out.print("\n");
+            // translateOriX.setText(Integer.toString(HelloApplication.get_plot_x()));
+            // translateOriY.setText(Integer.toString(HelloApplication.get_plot_y()));
+            // translateImgX.setText(Integer.toString(HelloApplication.get_plot_x_image()));
+            // translateImgY.setText(Integer.toString(HelloApplication.get_plot_y_image()));
+
+//            ObservableList<Player> list = FXCollections.observableArrayList(
+//                    new Player(HelloApplication.get_plot_x().get(0), HelloApplication.get_plot_y().get(0)),
+//                    new Player(HelloApplication.get_plot_x().get(1), HelloApplication.get_plot_y().get(1)),
+//                    new Player(HelloApplication.get_plot_x().get(2), HelloApplication.get_plot_y().get(2)),
+//                    new Player(HelloApplication.get_plot_x().get(3), HelloApplication.get_plot_y().get(3)),
+//            );
+//
+//            TransX.setCellValueFactory(new PropertyValueFactory<Player,Integer>("plot_x"));
+//            TransY.setCellValueFactory(new PropertyValueFactory<Player,Integer>("plot_y"));
+//            TransXImg.setCellValueFactory(new PropertyValueFactory<Player,Integer>("plot_x_image"));
+//            TransYImg.setCellValueFactory(new PropertyValueFactory<Player,Integer>("plot_y_image"));
+//
+
+            // System.out.print(HelloApplication.get_plot_x());
+            // System.out.print(HelloApplication.get_plot_y());
+            // System.out.print("\n");
+            // System.out.print(HelloApplication.get_plot_x_image());
+            // System.out.print(HelloApplication.get_plot_y_image());
+            // System.out.print("\n");
 
         }
         else
@@ -422,7 +453,7 @@ public class HelloController {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("final-view.fxml"));
             Stage window = (Stage)rotationCheck.getScene().getWindow();
             window.setScene(new Scene(fxmlLoader.load(), 600, 400));
-            
+
         }
     }
 
